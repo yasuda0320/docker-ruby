@@ -26,7 +26,7 @@ RUN set -ex \
 
 RUN set -ex \
     && curl -O https://cache.ruby-lang.org/pub/ruby/${RUBY_MAJOR%-rc}/ruby-$RUBY_VERSION.tar.gz \
-    && echo "$RUBY_DOWNLOAD_SHA256 *ruby-$RUBY_VERSION.tar.gz" | sha256sum -c - \
+    && echo "$RUBY_DOWNLOAD_SHA256 ruby-$RUBY_VERSION.tar.gz" | sha256sum -c - \
     && tar -xzvf ruby-$RUBY_VERSION.tar.gz \
     && rm -rf /ruby-$RUBY_VERSION.tar.gz \
     && cd ruby-$RUBY_VERSION \
