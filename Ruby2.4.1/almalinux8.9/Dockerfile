@@ -22,7 +22,8 @@ RUN set -ex \
         openssl-devel \
         readline-devel \
         ruby \
-        tar
+        tar \
+    && dnf clean all
 
 RUN set -ex \
     && curl -O https://cache.ruby-lang.org/pub/ruby/${RUBY_MAJOR%-rc}/ruby-$RUBY_VERSION.tar.gz \
@@ -34,6 +35,7 @@ RUN set -ex \
     && make -j "$(nproc)" \
     && make install \
     && dnf remove -y ruby \
+    && dnf clean all \
     && cd / \
     && rm -rf /ruby-$RUBY_VERSION \
     && gem update --system "$RUBYGEMS_VERSION"
