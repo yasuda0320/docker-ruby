@@ -1,15 +1,15 @@
 FROM almalinux:8.9
 
+ARG RUBY_MAJOR=2.4
+ARG RUBY_VERSION=2.4.1
+ARG RUBY_DOWNLOAD_SHA256=a330e10d5cb5e53b3a0078326c5731888bb55e32c4abfeb27d9e7f8e5d000250
+ARG RUBYGEMS_VERSION=2.6.13
+
 RUN mkdir -p /usr/local/etc \
     && { \
         echo 'install: --no-document'; \
         echo 'update: --no-document'; \
     } >> /usr/local/etc/gemrc
-
-ENV RUBY_MAJOR 2.4
-ENV RUBY_VERSION 2.4.1
-ENV RUBY_DOWNLOAD_SHA256 a330e10d5cb5e53b3a0078326c5731888bb55e32c4abfeb27d9e7f8e5d000250
-ENV RUBYGEMS_VERSION 2.6.13
 
 RUN set -ex \
     && dnf update -y \
